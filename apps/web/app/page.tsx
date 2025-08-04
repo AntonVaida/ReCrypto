@@ -15,7 +15,7 @@ export default async function Home() {
         />
         <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
           <li className="mb-2 tracking-[-.01em]">
-            dddd
+            Check CI/CD pipeline
           </li>
           <li className="tracking-[-.01em]">
             Save and see your changes instantly.
