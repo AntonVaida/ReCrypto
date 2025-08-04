@@ -32,8 +32,8 @@ on:
 
 env:
   AWS_REGION: "us-east-1"
-  ECR_REPOSITORY_FRONTEND: "850219180623.dkr.ecr.us-east-1.amazonaws.com/frontend-private"
-  ECR_REPOSITORY_BACKEND: "850219180623.dkr.ecr.us-east-1.amazonaws.com/backend-private"
+  ECR_REPOSITORY_FRONTEND: "frontend-private"
+  ECR_REPOSITORY_BACKEND: "backend-private"
   ECS_CLUSTER: "re-crypto-cluster-5r5ya7"
   ECS_SERVICE_FRONTEND: "frontend-fargate-td-service-49jbca2c"
   ECS_SERVICE_BACKEND: "backend-fargate-td-service-jm173j0g"
