@@ -1,0 +1,51 @@
+{
+    "family": "backend-fargate-td",
+    "containerDefinitions": [
+        {
+            "name": "backend-private",
+            "image": "850219180623.dkr.ecr.us-east-1.amazonaws.com/backend-private:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "port-backend-fargate-4000",
+                    "containerPort": 4000,
+                    "hostPort": 4000,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/backend-fargate-td",
+                    "awslogs-create-group": "true",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "taskRoleArn": "arn:aws:iam::850219180623:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::850219180623:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "volumes": [],
+    "placementConstraints": [],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "512",
+    "memory": "1024",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "enableFaultInjection": false
+}
