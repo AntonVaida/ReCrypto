@@ -1,15 +1,6 @@
 import Image from "next/image";
 
-const helloMessage = async () => {
-  const url = process.env.NEXT_PUBLIC_API_URL;
-  const apiUrl = url?.trim() || 'http://backend:4000';
-
-  const response = await fetch(apiUrl, { cache: "no-store" });
-  return response.text();
-}
-
 export default async function Home() {
-  const message = await helloMessage();
 
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
@@ -24,7 +15,7 @@ export default async function Home() {
         />
         <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
           <li className="mb-2 tracking-[-.01em]">
-            {message}
+            dddd
           </li>
           <li className="tracking-[-.01em]">
             Save and see your changes instantly.
@@ -86,7 +77,6 @@ export default async function Home() {
             width={16}
             height={16}
           />
-          {message}
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
