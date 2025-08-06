@@ -36,7 +36,7 @@ env:
   ECR_REPOSITORY_BACKEND: "backend-private"
   ECS_CLUSTER: "re-crypto-cluster-5r5ya7"
   ECS_SERVICE_FRONTEND: "frontend-fargate-td-service-49jbca2c"
-  ECS_SERVICE_BACKEND: "backend-fargate-td-service-jm173j0g"
+  ECS_SERVICE_BACKEND: "backend-fargate-td-service-h2qfdntg"
   ECS_TASK_DEF_FRONTEND: "./deployment/frontend-fargate-td.json"
   ECS_TASK_DEF_BACKEND: "./deployment/backend-fargate-td.json"
   CONTAINER_NAME_FRONTEND: "frontend-private"
