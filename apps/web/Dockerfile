@@ -6,9 +6,6 @@ COPY package.json .
 
 COPY package-lock.json .
 
-ARG NEXT_PUBLIC_API_URL
-ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
-
 RUN npm install
 
 COPY . .
