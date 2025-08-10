@@ -133,7 +133,7 @@ jobs:
           -e POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
           -e POSTGRES_DB=$POSTGRES_DB \
           ${{ steps.build-backend.outputs.image }} \
-          pnpm migration:run -d src/db/typeorm.config.ts
+          sh -c "npm run migration:run:prod"
 
     - name: Render Backend Task Definition
       id: render-backend
