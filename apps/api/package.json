@@ -23,7 +23,7 @@
     "migration:run": "pnpm typeorm migration:run -d src/db/typeorm.config.ts",
     "migration:create": "pnpm typeorm migration:create src/db/migrations/NewMigration",
     "migration:revert": "pnpm typeorm migration:revert -d src/db/typeorm.config.ts",
-    "migration:run:prod": "NODE_ENV=production node ./node_modules/typeorm/cli.js migration:run -d ./dist/src/db/typeorm.config.js"
+    "migration:run:prod": "NODE_ENV=production node ./node_modules/typeorm/cli.js migration:run -d ./dist/db/typeorm.config.js"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
