@@ -113,6 +113,28 @@ jobs:
         docker push $ECR_REGISTRY/${{ env.ECR_REPOSITORY_BACKEND }}:${IMAGE_TAG}
         echo "image=$ECR_REGISTRY/${{ env.ECR_REPOSITORY_BACKEND }}:${IMAGE_TAG}" >> $GITHUB_OUTPUT
 
+    - name: Run migrations on production DB
+      env:
+        NODE_ENV: production
+        POSTGRES_HOST: ${{ secrets.PROD_DB_HOST }}
+        POSTGRES_PORT: ${{ secrets.PROD_DB_PORT }}
+        POSTGRES_USER: ${{ secrets.PROD_DB_USER }}
+        POSTGRES_PASSWORD: ${{ secrets.PROD_DB_PASSWORD }}
+        POSTGRES_DB: ${{ secrets.PROD_DB_NAME }}
+        AWS_REGION: ${{ env.AWS_REGION }}
+      run: |
+        aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin ${{ steps.login-ecr.outputs.registry }}
+        docker pull ${{ steps.build-backend.outputs.image }}
+        docker run --rm \
+          -e NODE_ENV=$NODE_ENV \
+          -e POSTGRES_HOST=$POSTGRES_HOST \
+          -e POSTGRES_PORT=$POSTGRES_PORT \
+          -e POSTGRES_USER=$POSTGRES_USER \
+          -e POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
+          -e POSTGRES_DB=$POSTGRES_DB \
+          ${{ steps.build-backend.outputs.image }} \
+          pnpm migration:run -d src/db/typeorm.config.ts
+
     - name: Render Backend Task Definition
       id: render-backend
       uses: aws-actions/amazon-ecs-render-task-definition@v1
